@@ -1,4 +1,5 @@
 #!/bin/bash
+
 set -e
 
 # Multi-Environment Deploy Script
@@ -10,14 +11,14 @@ echo "DevOps Simulator - Deployment"
 echo "====================================="
 
 if [ "$DEPLOY_ENV" = "production" ]; then
-    echo "Mode: Production"
+    echo "Mode: production"
     DEPLOY_REGION="us-east-1"
     APP_PORT=8080
     echo "Environment: $DEPLOY_ENV"
     echo "Region: $DEPLOY_REGION"
     echo "Port: $APP_PORT"
     echo "Starting production deployment..."
-    
+
 elif [ "$DEPLOY_ENV" = "development" ]; then
     echo "Mode: Development"
     DEPLOY_MODE="docker-compose"
@@ -27,7 +28,19 @@ elif [ "$DEPLOY_ENV" = "development" ]; then
     echo "Installing dependencies..."
     npm install
     echo "Starting development server..."
-    
+
+elif [ "$DEPLOY_ENV" = "experimental "]; then
+    DEPLOY_ENV="experimental"
+    DEPLOY_STRATEGY="canary"
+    DEPLOY_CLOUDS=("aws" "azure" "gcp")
+    AI_OPTIMIZATION=true
+    CHAOS_TESTING=false
+    echo "Environment: $DEPLOY_ENV"
+    echo "Strategy: $DEPLOY_STRATEGY"
+    echo "Target Clouds: ${DEPLOY_CLOUDS[@]}"
+    echo "AI Optimization: $AI_OPTIMIZATION"
+    echo "Starting experimental deployment..."
+
 else
     echo "Error: Unknown environment $DEPLOY_ENV"
     exit 1

@@ -1,3 +1,4 @@
+
 application:
   name: DevOpsSimulator
   version: 1.0.0
@@ -12,9 +13,44 @@ logging:
   level: INFO
   format: json
   
+# Development Configuration (enabled via environment variable)
 development:
   enabled: false
   port: 3000
   hot_reload: false
   debug_mode: false
   mock_apis: false
+
+# Testing Configuration
+experimental:
+  enabled: false
+  experimental_mode: false
+  multi_port: [9000, 9001, 9002]
+  output: /var/log/experimental.log
+  ai_analysis: enabled
+
+  database:
+    distributed: false
+
+  features:
+    auto_scaling: advanced
+    load_balancer: ai-optimized
+    backup_enabled: false
+    chaos_engineering: enabled
+
+  ai_features:
+    predictive_scaling: false
+    anomaly_detection: false
+    auto_optimization: false
+    model_version: "v2.1.0"
+
+  cloud_providers:
+    - aws
+    - azure
+    - gcp
+    - digitalocean
+
+  security:
+    zero_trust: enabled
+    encryption: AES-256
+    audit_logging: comprehensive
